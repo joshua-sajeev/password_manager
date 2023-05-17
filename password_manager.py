@@ -15,19 +15,19 @@ while choice != 'Q':
     if choice == '1':
         create()
         choice = menu()
-    if choice == '2':
+    elif choice == '2':
         find_accounts()
         choice = menu()
-    if choice == '3':
+    elif choice == '3':
         find()
         choice = menu()
-    if choice == '4':
+    elif choice == '4':
         update()
         choice = menu()
-    if choice =='5':
+    elif choice =='5':
         delete()
         choice = menu()
-    if choice =='6':
+    elif choice =='6':
         show()
         choice = menu()
     else:

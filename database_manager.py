@@ -97,11 +97,10 @@ def show_all():
         print('')
         for row in result:
             print()
-            for i in range(0, len(row)-1):
+            for i in range(0, len(row)):
                 print(data[i] + row[i])
         print('')
         print('-'*30)
     except (Exception, mc.Error) as error:
         print(error)
 
-show_all()
