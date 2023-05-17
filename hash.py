@@ -1,9 +1,8 @@
 import bcrypt
-
+from hashlib import blake2b
 def make_password(plaintext):
-    salt=bcrypt.gensalt()
-    pw=plaintext.encode('ASCII')
-    password=bcrypt.hashpw(pw,salt)
+    h = blake2b(digest_size=20)
+    pwd=plaintext.encode()
+    h.update(pwd)
+    password=h.hexdigest()
     return str(password)
-
-

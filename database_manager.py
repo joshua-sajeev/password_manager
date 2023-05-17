@@ -1,4 +1,5 @@
 import mysql.connector as mc
+from hash import make_password
 
 def store_passwords(password, user_email, username, url, app_name):
     try:
@@ -53,5 +54,54 @@ def find_users(user_email):
     except (Exception, mc.Error) as error:
         print(error)
 
-# store_passwords("hsif","j@gmail.com",'hi','ji','ko')
-find_users('j@gmail.com')
+def update_password(app_name):
+    try:
+        email=input("Please enter the email: ")
+        password = input("Enter the new password: ")
+        new_password=make_password(password)
+        connection=connect()
+        mycursor = connection.cursor()
+        sql = "UPDATE accounts SET password = %s WHERE email = %s AND app_name = %s"
+        val = (new_password, email, app_name)
+        mycursor.execute(sql, val)
+        connection.commit()
+        print(f"{mycursor.rowcount} record(s) affected")
+    except (Exception, mc.Error) as error:
+        print(error)
+
+
+def delete_password(app_name):
+    try:
+        email=input("Please enter the email: ")
+        connection=connect()
+        mycursor = connection.cursor()
+        sql = "DELETE FROM accounts WHERE email = %s AND app_name = %s"
+        val = (email, app_name)
+        mycursor.execute(sql, val)
+        connection.commit()
+        print(f"{mycursor.rowcount} record(s) affected")
+    except (Exception, mc.Error) as error:
+        print(error)
+
+def show_all():
+    data = ('Password: ', 'Email: ', 'Username: ', 'url: ', 'App/Site name: ') 
+    try:
+        connection = connect()
+        cursor = connection.cursor(buffered=True)
+        mysql_select_query = " SELECT * FROM accounts "
+        cursor.execute(mysql_select_query)
+        connection.commit()
+        result = cursor.fetchall()
+        print('')
+        print('RESULT')
+        print('')
+        for row in result:
+            print()
+            for i in range(0, len(row)-1):
+                print(data[i] + row[i])
+        print('')
+        print('-'*30)
+    except (Exception, mc.Error) as error:
+        print(error)
+
+show_all()

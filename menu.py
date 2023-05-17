@@ -1,6 +1,6 @@
 from hash import make_password
 import subprocess 
-from database_manager import store_passwords, find_users, find_password 
+from database_manager import store_passwords, find_users, find_password , update_password, delete_password,show_all
 
 def menu():
     print('-'*30)
@@ -8,6 +8,9 @@ def menu():
     print('1. Create new password')
     print('2. Find all sites and apps connected to an email')
     print('3. Find a password for a site or app')
+    print('4. Update a password for a site or app')
+    print('5. Delete a password for a site or app')
+    print('6. Show all passwords')
     print('Q. Exit')
     print('-'*30)
     return input(': ')
@@ -35,3 +38,14 @@ def find_accounts():
    print('Please proivide the email that you want to find accounts for: ')
    user_email = input() 
    find_users(user_email)
+
+def update():
+  app_name = input("Enter the app name to update: ")
+  update_password(app_name)
+  
+def delete():
+   app_name = input("Enter the website to delete: ")
+   delete_password(app_name)
+
+def show():
+   show_all()
