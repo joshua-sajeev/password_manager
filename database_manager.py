@@ -2,6 +2,7 @@ import mysql.connector as mc
 from hash import make_password
 
 def store_passwords(password, user_email, username, url, app_name):
+    """ To store hashed password and details"""
     try:
         connection = connect()
         cursor = connection.cursor()
@@ -13,6 +14,7 @@ def store_passwords(password, user_email, username, url, app_name):
         print(error)
 
 def connect():
+    """Create a connection with the database"""
     try:
         connection = mc.connect(user='root',host="localhost",password='joshua',database='PasswordManager')
         return connection
@@ -20,6 +22,7 @@ def connect():
         print(error)
 
 def find_password(app_name):
+    """ Find the password for a site"""
     try:
         connection = connect()
 
@@ -35,6 +38,7 @@ def find_password(app_name):
         print(error)
         
 def find_users(user_email):
+    """Find all the passwords and details related to an email"""
     data = ('Password: ', 'Email: ', 'Username: ', 'url: ', 'App/Site name: ') 
     try:
         connection = connect()
@@ -55,6 +59,7 @@ def find_users(user_email):
         print(error)
 
 def update_password(app_name):
+    """To update a password"""
     try:
         email=input("Please enter the email: ")
         password = input("Enter the new password: ")
@@ -71,6 +76,7 @@ def update_password(app_name):
 
 
 def delete_password(app_name):
+    """ To delete a password"""
     try:
         email=input("Please enter the email: ")
         connection=connect()
@@ -84,6 +90,7 @@ def delete_password(app_name):
         print(error)
 
 def show_all():
+    """To show all passwords"""
     data = ('Password: ', 'Email: ', 'Username: ', 'url: ', 'App/Site name: ') 
     try:
         connection = connect()
