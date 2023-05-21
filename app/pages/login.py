@@ -1,5 +1,7 @@
 import pynecone as pc
 from .menu import menu
+from app.state.login import LoginState
+
 def login():
     login_container=pc.container(
             pc.vstack(
@@ -39,18 +41,16 @@ def login():
                             color="white",
                             fontWeight="semibold",
                             fontSize="22px",
+                            on_change=LoginState.set_password,
                         ),
-                        width="auto",
+                        width="550px",
                         center_content=True,
                     ),
                     pc.container(height="5px"),
                     pc.container(
-                        pc.link(
-                            pc.button("Sign In",underline="none"),
-                            href="/menu",
-                        ),
-                        width="450px",
-                        center_content=True,
+                            pc.button("Sign In",on_click=LoginState.log_in),
+                            width="450px",
+                            center_content=True,
 
                     ),
                 ),
