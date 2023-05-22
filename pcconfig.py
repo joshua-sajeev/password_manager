@@ -3,8 +3,7 @@ import pynecone as pc
 class AppConfig(pc.Config):
     pass
 
-config = AppConfig(
+config = pc.Config(
     app_name="app",
-    db_url="sqlite:///pynecone.db",
-    env=pc.Env.DEV,
+    db_url="mysql+mysqlconnector://root:joshua@localhost:3306/PasswordManager",
 )

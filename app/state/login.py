@@ -6,7 +6,7 @@ from .state import State
 class LoginState(State):
     """State for the login form."""
 
-    password: str = "ok"
+    password: str = "we"
 
     def log_in(self):
             if self.password =="ADMIN_KEY":

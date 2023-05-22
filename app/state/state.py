@@ -1,6 +1,6 @@
 from typing import Optional
 import pynecone as pc
-from .models import User, Contact
+from .models import User,accounts
 
 
 class State(pc.State):
