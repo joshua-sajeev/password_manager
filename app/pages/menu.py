@@ -5,7 +5,7 @@ def menu():
             pc.vstack(
                 pc.container(height="15vh"),
                 pc.button("Create",width="100px",on_click=pc.redirect("/create")),
-                pc.button("Update",size="md"),
+                pc.button("Update",size="md",on_click=pc.redirect("/update")),
                 pc.button("Delete",size="md"),
                 pc.button("Show All",size="md"),
                 pc.button("Find Password",size="md"),

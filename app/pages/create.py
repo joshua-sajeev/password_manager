@@ -2,12 +2,6 @@ import pynecone as pc
 from app.state.button import MyState
 
 def create():
-    custom_icon = pc.image(
-    src="/home/joshua/Python/app/assets/bg.svg",
-    alt="Custom icon",
-    width=24,
-    height=24
-    )
     container=pc.container(
             pc.vstack(
                 pc.box(height="2vh"),
