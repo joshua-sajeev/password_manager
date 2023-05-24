@@ -56,3 +56,20 @@ class MyState(State):
             else:
                 # No matching user found
                 return pc.window_alert("Invalid email address or password. Please try again.")
+
+    def delete_password(self):
+        with pc.session() as session:
+            # Query the User record corresponding to the provided email
+            user = (session.query(accounts
+                                  ).filter(accounts.email==self.email_feild
+                                           ).filter(accounts.username==self.username_feild
+                                                    ).filter(accounts.password==self.password_feild
+                                                            ).delete()
+            )
+            # If a user is found with the given email and old_password
+            if user:
+                session.commit()
+                return pc.window_alert("Password deleted successfully")
+            else:
+                # No matching user found
+                return pc.window_alert("Invalid email address or password. Please try again.")

@@ -6,7 +6,7 @@ def menu():
                 pc.container(height="15vh"),
                 pc.button("Create",width="100px",on_click=pc.redirect("/create")),
                 pc.button("Update",size="md",on_click=pc.redirect("/update")),
-                pc.button("Delete",size="md"),
+                pc.button("Delete",size="md",on_click=pc.redirect("/delete")),
                 pc.button("Show All",size="md"),
                 pc.button("Find Password",size="md"),
                 pc.button("Find Accounts",size="md"),
