@@ -36,6 +36,7 @@ class MyState(State):
         self.username_feild=""
         self.app_name_feild=""
         self.old_password=""
+        self.new_password=""
 
     def update_password(self):
         self.password_feild=make_password(self.new_password)
@@ -51,7 +52,6 @@ class MyState(State):
             )
             if user:
                 session.commit()
-                ppc.copy(user.password)
                 return pc.window_alert("Password updated successfully")
             else:
                 return pc.window_alert("Invalid email address or password. Please try again.")
@@ -73,10 +73,18 @@ class MyState(State):
 
     def find_password(self):
         with pc.session() as session:
-            user = session.query(accounts).filter((accounts.username == self.username_feild) & (accounts.email == self.email_feild)).first()
+            user = session.query(accounts).filter((accounts.email == self.email_feild)&((accounts.username == self.username_feild) | (accounts.app_name == self.app_name_feild))).first()
             if user:
                 ppc.copy(user.password)
                 return pc.window_alert(f"Password copied to clipboard")
             else:
                 return pc.window_alert("Can't find the password.Check your details again")
     
+    def copy_password(self):
+        with pc.session() as session:
+            user = session.query(accounts).filter((accounts.email == self.email_feild)&(accounts.password == self.password_feild)).first()
+            if user:
+                ppc.copy(user.password)
+                return pc.window_alert(f"Password copied to clipboard")
+            else:
+                return pc.window_alert("Check your details again")

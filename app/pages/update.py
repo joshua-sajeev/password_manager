@@ -58,7 +58,7 @@ def update():
                             color="white",
                             value=MyState.old_password,
                             on_change=MyState.set_old_password,
-                        )
+                        ),
                 ),
                 pc.box(height="2vh"),
                 pc.hstack(
@@ -72,14 +72,15 @@ def update():
                             color="white",
                             value=MyState.new_password,
                             on_change=MyState.set_new_password,
-                        )
+                        ),
                 ),
                 pc.box(height="2vh"),
                 
                 
                 pc.hstack(
                     pc.button("Update",on_click=MyState.update_password),
-                    pc.button("Clear",on_click=MyState.clear_text)                      
+                    pc.button("Clear",on_click=MyState.clear_text),
+                    pc.button("Copy",on_click=MyState.copy_password)                      
                 ),
             ),
             width="850px",

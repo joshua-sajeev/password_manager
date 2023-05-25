@@ -32,6 +32,7 @@ def findpw():
                         center_content=True,
                     ),
                 ),
+                pc.text("Type email and username or app name",color="white"),
                 pc.box(height="2vh"),
                 pc.hstack(
                     pc.icon(
@@ -58,6 +59,20 @@ def findpw():
                             color="white",
                             value=MyState.username_feild,
                             on_change=MyState.set_username_feild,
+                        )
+                ),
+                pc.box(height="2vh"),
+                pc.hstack(
+                        pc.icon(
+                            tag="drag_handle",
+                            color="white",
+                            fontSize="22px",
+                        ),
+                        pc.input(
+                            placeholder="app name",
+                            color="white",
+                            value=MyState.app_name_feild,
+                            on_change=MyState.set_app_name_feild,
                         )
                 ),
                 pc.box(height="2vh"),

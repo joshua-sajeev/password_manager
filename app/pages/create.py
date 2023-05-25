@@ -14,6 +14,7 @@ def create():
                                 _hover={
                                     "color": "rgb(107,99,246)",
                                 },
+                                on_click=MyState.clear_text,
                                 ),
                         pc.spacer(flex=1),
                         pc.heading("Type in your Details"),

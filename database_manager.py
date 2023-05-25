@@ -16,7 +16,7 @@ def store_passwords(password, user_email, username, url, app_name):
 def connect():
     """Create a connection with the database"""
     try:
-        connection = mc.connect(user='user',host="localhost",password='password',database='db')
+        connection = mc.connect(user='root',host="localhost",password='joshua',database='PasswordManager')
         return connection
     except (Exception, mc.Error) as error:
         print(error)
