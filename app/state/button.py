@@ -1,7 +1,6 @@
 import pynecone as pc
 from .state import State
 from .models import accounts
-import mysql.connector as mc
 
 
 
@@ -39,7 +38,6 @@ class MyState(State):
 
     def update_password(self):
         with pc.session() as session:
-            # Query the User record corresponding to the provided email
             user = (session.query(accounts
                           ).filter(
                             accounts.email==self.email_feild
@@ -49,40 +47,31 @@ class MyState(State):
                                accounts.password: self.password_feild
                                })
             )
-            # If a user is found with the given email and old_password
             if user:
                 session.commit()
                 return pc.window_alert("Password updated successfully")
             else:
-                # No matching user found
                 return pc.window_alert("Invalid email address or password. Please try again.")
 
     def delete_password(self):
         with pc.session() as session:
-            # Query the User record corresponding to the provided email
             user = (session.query(accounts
                                   ).filter(accounts.email==self.email_feild
                                            ).filter(accounts.username==self.username_feild
                                                     ).filter(accounts.password==self.password_feild
                                                             ).delete()
             )
-            # If a user is found with the given email and old_password
             if user:
                 session.commit()
                 return pc.window_alert("Password deleted successfully")
             else:
-                # No matching user found
                 return pc.window_alert("Invalid email address or password. Please try again.")
 
 
     def find_password(self):
-        with pc.session as session:
-            user = (session.query(accounts
-                                  ).filter(accounts.email==self.email_feild
-                                           ).filter(accounts.username==self.username_feild
-                                                            ).first()
-                  )
-        if user:
-                return pc.window_alert(f"Password is {user.password} ")
-        else:
-            return pc.window_alert("Invalid email address or password. Please try again.")
+        with pc.session() as session:
+            user = session.query(accounts).filter((accounts.username == self.username_feild) & (accounts.email == self.email_feild)).first()
+            if user:
+                return pc.window_alert(f"Password is {user.password}")
+            else:
+                return pc.window_alert("Can't find the password.Check your details again")
