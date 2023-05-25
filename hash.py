@@ -1,6 +1,6 @@
 from hashlib import blake2b
 def make_password(plaintext):
-    h = blake2b(digest_size=20)
+    h = blake2b(digest_size=8)
     pwd=plaintext.encode()
     h.update(pwd)
     password=h.hexdigest()
