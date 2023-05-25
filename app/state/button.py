@@ -73,3 +73,16 @@ class MyState(State):
             else:
                 # No matching user found
                 return pc.window_alert("Invalid email address or password. Please try again.")
+
+
+    def find_password(self):
+        with pc.session as session:
+            user = (session.query(accounts
+                                  ).filter(accounts.email==self.email_feild
+                                           ).filter(accounts.username==self.username_feild
+                                                            ).first()
+                  )
+        if user:
+                return pc.window_alert(f"Password is {user.password} ")
+        else:
+            return pc.window_alert("Invalid email address or password. Please try again.")

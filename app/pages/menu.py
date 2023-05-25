@@ -8,7 +8,7 @@ def menu():
                 pc.button("Update",size="md",on_click=pc.redirect("/update")),
                 pc.button("Delete",size="md",on_click=pc.redirect("/delete")),
                 pc.button("Show All",size="md"),
-                pc.button("Find Password",size="md"),
+                pc.button("Find Password",size="md",on_click=pc.redirect("/findpw")),
                 pc.button("Find Accounts",size="md"),
             ),
             width="1050vh",

@@ -1,6 +1,6 @@
 import pynecone as pc
 from app.state.button import MyState
-def delete():
+def findpw():
     container=pc.container(
             pc.vstack(
                 pc.box(height="2vh"),
@@ -50,23 +50,7 @@ def delete():
                 ),
                 pc.box(height="2vh"),
                 pc.hstack(
-                        pc.icon(
-                            tag="lock",
-                            color="white",
-                            fontSize="22px",
-                        ),
-                        pc.input(
-                            placeholder="password",
-                            color="white",
-                            value=MyState.password_feild,
-                            on_change=MyState.set_password_feild,
-                        )
-                ),
-                pc.box(height="2vh"),
-                
-                
-                pc.hstack(
-                    pc.button("Delete",on_click=MyState.delete_password),
+                    pc.button("Find",on_click=MyState.find_password),
                     pc.button("Clear",on_click=MyState.clear_text)                      
                 ),
             ),
