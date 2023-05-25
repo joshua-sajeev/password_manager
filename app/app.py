@@ -9,12 +9,12 @@ from app.pages.findpw import findpw
 from app.state.state import State
 
 app=pc.App(state=State)
-app.add_page(index)
-app.add_page(login)
-app.add_page(menu)
-app.add_page(create)
-app.add_page(update)
-app.add_page(delete)
-app.add_page(findpw)
+app.add_page(index,title="Password Manager")
+app.add_page(login,title="Password Manager")
+app.add_page(menu,title="Password Manager")
+app.add_page(update,title="Password Manager")
+app.add_page(create,title="Password Manager")
+app.add_page(delete,title="Password Manager")
+app.add_page(findpw,title="Password Manager")
 
 app.compile()

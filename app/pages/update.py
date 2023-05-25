@@ -10,10 +10,22 @@ def update():
                                 ,underline="none",
                                 fontSize="35px",
                                 href="/menu",
+                                _hover={
+                                    "color": "rgb(107,99,246)",
+                                },
                                 on_click=MyState.clear_text,
                                 ),
                         pc.spacer(flex=1),
                         pc.heading("Type in your Details"),
+                        pc.spacer(flex=1),
+                        pc.link(pc.icon(tag="close"),
+                                color="white",
+                                href="/login",
+                                _hover={
+                                    "color": "rgb(107,99,246)",
+                                },
+                                on_click=MyState.clear_text,
+                            ),
                         color="#f2fbfd",
                         fontWeight="semibold",
                         width="500px",
@@ -58,8 +70,8 @@ def update():
                         pc.input(
                             placeholder="new password",
                             color="white",
-                            value=MyState.password_feild,
-                            on_change=MyState.set_password_feild,
+                            value=MyState.new_password,
+                            on_change=MyState.set_new_password,
                         )
                 ),
                 pc.box(height="2vh"),
