@@ -1,12 +1,11 @@
 import pynecone as pc
-from .models import User
 from .state import State
 
 
 class LoginState(State):
     """State for the login form."""
 
-    password: str = "we"
+    password: str = ""
 
     def log_in(self):
             if self.password =="ADMIN_KEY":

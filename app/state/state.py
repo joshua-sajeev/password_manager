@@ -1,9 +1,8 @@
 from typing import Optional
 import pynecone as pc
-from .models import User,accounts
+from .models import accounts
 
 
 class State(pc.State):
     """The app state."""
 
-    user: Optional[User] = None

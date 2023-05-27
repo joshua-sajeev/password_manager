@@ -12,9 +12,37 @@ class MyState(State):
     username_feild: str=""
     app_name_feild: str=""
 
+
+
+    def valid_credentials(self):
+        if self.email_feild=="" or self.old_password=="" and (self.username_feild== "" or self.app_name_feild==""):
+            return True
+        
+    def duplicate_entry(self):
+        with pc.session() as session:
+            user = session.exec(accounts.select.where(accounts.email == self.email_feild).where(accounts.username==self.username_feild)).first()
+            
+            # user = (session.query(accounts
+            #               ).filter(
+            #                 accounts.email==self.email_feild
+            #               ).filter(
+            #                 accounts.username==self.username_feild
+            #                 ).first()
+            #         )
+            if user:
+                return True
+            else:
+                return False
+        pass
     def add_password(self):
-        self.password_feild=make_password(self.old_password)
+        if self.valid_credentials():
+            return pc.window_alert("Invalid email address or password. Please try again.")
+        if self.duplicate_entry():
+            return pc.window_alert("Duplicate entry")
+
+            
         try:
+            self.password_feild=make_password(self.old_password)
             with pc.session() as session:
                     session.add(
                         accounts(
