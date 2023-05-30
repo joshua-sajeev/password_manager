@@ -5,18 +5,19 @@ def menu():
             pc.container(height="1vh"),
             pc.hstack(
                 pc.spacer(),
-                pc.link(pc.icon(tag="close"),
-                        color="white",
-                        href="/login",
-                        _hover={
-                            "color": "rgb(107,99,246)",
-                        },
-                        on_click=MyState.clear_text,
-                    ),
+                pc.link(
+                    pc.icon(tag="close",on_mouse_down=MyState.clear_text()),
+                    href="/login",
+                    color="white",
+                    _hover={
+                                "color": "rgb(107,99,246)",
+                            },
+                    button=True,
+                ),
             ),
             pc.vstack(
                 pc.container(height="3vh"),
-                pc.button("Create",width="100px",on_click=pc.redirect("/create")),
+                pc.button("Create",width="100px",on_click=pc.redirect("/create"),),
                 pc.container(height="1.5vh"),
                 pc.button("Update",size="md",on_click=pc.redirect("/update")),
                 pc.container(height="1.5vh"),

@@ -116,3 +116,6 @@ class MyState(State):
                 return pc.window_alert(f"Password copied to clipboard")
             else:
                 return pc.window_alert("Check your details again")
+    
+    def to_menu(self):
+        pc.redirect("\menu")

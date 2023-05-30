@@ -13,12 +13,3 @@ class LoginState(State):
             else:
                 return pc.window_alert("Wrong password.")
 
-    def on_key_down(self, key):
-        if key == "Enter":
-            if self.password =="ADMIN_KEY":
-                return pc.redirect("/menu")
-            else:
-                return pc.window_alert("Wrong password.")
-
-            
-

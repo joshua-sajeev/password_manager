@@ -42,7 +42,6 @@ def login():
                             fontWeight="semibold",
                             fontSize="22px",
                             on_change=LoginState.set_password,
-                            on_key_down=LoginState.on_key_down,
                         ),
                         width="550px",
                         center_content=True,

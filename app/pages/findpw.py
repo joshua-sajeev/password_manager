@@ -6,25 +6,25 @@ def findpw():
                 pc.box(height="2vh"),
                 pc.container(
                     pc.hstack(
-                        pc.link(pc.icon(tag="chevron_left")
+                        pc.link(pc.icon(tag="chevron_left",on_mouse_down=MyState.clear_text())
                                 ,underline="none",
                                 fontSize="35px",
                                 href="/menu",
                                 _hover={
                                     "color": "rgb(107,99,246)",
                                 },
-                                on_click=MyState.clear_text,
+                                # on_click=MyState.clear_text,
                                 ),
                         pc.spacer(flex=1),
                         pc.heading("Type in your Details"),
                         pc.spacer(flex=1),
-                        pc.link(pc.icon(tag="close"),
+                        pc.link(pc.icon(tag="close",on_mouse_down=MyState.clear_text()),
                                 color="white",
                                 href="/login",
                                 _hover={
                                     "color": "rgb(107,99,246)",
                                 },
-                                on_click=MyState.clear_text,
+                                # on_click=MyState.clear_text,
                             ),
                         color="#f2fbfd",
                         fontWeight="semibold",
